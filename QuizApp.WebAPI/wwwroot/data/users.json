@@ -1,0 +1,47 @@
+[
+    {
+      "Id": "00000000-0000-0000-0000-000000000000",
+      "FirstName": "System",
+      "LastName": "Administrator",
+      "UserName": "systemadministrator",
+      "Email": "systemadmin@domain.com",
+      "Password": "Admin@1234",
+      "PhoneNumber": "0123456789",
+      "DateOfBirth": "1990-01-01",
+      "Role": "System Administrator"
+  },
+  {
+      "Id": "56C86DC2-0C0D-4699-BC37-5953B0EFB356",
+      "FirstName": "Cong",
+      "LastName": "Dinh",
+      "UserName": "congdinh",
+      "Email": "congdinh@domain.com",
+      "Password": "Admin@1234",
+      "PhoneNumber": "0123456789",
+      "DateOfBirth": "1990-01-01",
+      "Role": "Administrator"
+  },
+  {
+      "Id": "136A79F3-F5D8-4709-85FA-89702B862358",
+      "FirstName": "Van",
+      "LastName": "Nguyen",
+      "UserName": "vannguyen",
+      "Email": "vannguyen@domain.com",
+      "Password": "Manager@1234",
+      "PhoneNumber": "0123456789",
+      "DateOfBirth": "1990-01-01",
+      "Role": "Manager"
+  },
+  {
+      "Id": "81002E02-9E55-44AF-A1B3-6CC24AA12F1C",
+      "FirstName": "Thang",
+      "LastName": "Nguyen",
+      "UserName": "thangnguyen",
+      "Email": "thangnguyen@domain.com",
+      "Password": "User@1234",
+      "PhoneNumber": "0123456789",
+      "DateOfBirth": "1990-01-01",
+      "Role": "User"
+    }
+  ]
+  

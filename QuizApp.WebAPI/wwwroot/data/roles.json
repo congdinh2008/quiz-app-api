@@ -1,0 +1,35 @@
+[
+    {
+      "Id": "7EA39422-0F5F-4624-AFB9-12AD4BD91834",
+      "Description": "System Administrator",
+      "IsDeleted": false,
+      "Name": "System Administrator",
+      "NormalizedName": "SYSTEMADMINISTRATOR",
+      "ConcurrencyStamp": "317c0098-60d7-4137-aa73-9b50f83badfd"
+    },
+    {
+      "Id": "78881DFA-AF65-4B02-828E-BD9B83249A54",
+      "Description": "Manager",
+      "IsDeleted": false,
+      "Name": "Manager",
+      "NormalizedName": "MANAGER",
+      "ConcurrencyStamp": "0f04b6e7-646e-4944-a096-b54122ddb246"
+    },
+    {
+      "Id": "94744660-FD28-4CEF-A520-621A075B733F",
+      "Description": "Administrator",
+      "IsDeleted": false,
+      "Name": "Administrator",
+      "NormalizedName": "ADMINISTRATOR",
+      "ConcurrencyStamp": "c9303dfc-87f8-4a1e-9995-17cf863c5b4a"
+    },
+    {
+      "Id": "3FD6E141-04BC-458D-8C15-98B51F3FE82A",
+      "Description": "User",
+      "IsDeleted": false,
+      "Name": "User",
+      "NormalizedName": "USER",
+      "ConcurrencyStamp": "75b81fab-dbcb-429d-a2a8-b70dd661c4eb"
+    }
+  ]
+  

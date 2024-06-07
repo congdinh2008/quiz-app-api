@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.WebAPI", "QuizApp.WebAPI\QuizApp.WebAPI.csproj", "{A1594623-F6E6-4155-978E-E5A03F4B0FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Business", "QuizApp.Business\QuizApp.Business.csproj", "{D340AA0A-B2CF-42EF-B24E-3C0CC7FF88F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Data", "QuizApp.Data\QuizApp.Data.csproj", "{CA381ECF-7A58-400A-9098-55162499AD33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Models", "QuizApp.Models\QuizApp.Models.csproj", "{F1215954-0817-4176-A1AE-045FBB5B5AD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Appendix", "Appendix", "{06F43BE7-B0B5-4732-A005-59F82BE9630C}"
+	ProjectSection(SolutionItems) = preProject
+		PackageCommands.md = PackageCommands.md
+		MigrationCommands.md = MigrationCommands.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApp.Core", "QuizApp.Core\QuizApp.Core.csproj", "{6B78960C-A067-4ACD-98A1-47709BC7AB5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1594623-F6E6-4155-978E-E5A03F4B0FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1594623-F6E6-4155-978E-E5A03F4B0FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1594623-F6E6-4155-978E-E5A03F4B0FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1594623-F6E6-4155-978E-E5A03F4B0FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D340AA0A-B2CF-42EF-B24E-3C0CC7FF88F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D340AA0A-B2CF-42EF-B24E-3C0CC7FF88F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D340AA0A-B2CF-42EF-B24E-3C0CC7FF88F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D340AA0A-B2CF-42EF-B24E-3C0CC7FF88F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA381ECF-7A58-400A-9098-55162499AD33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA381ECF-7A58-400A-9098-55162499AD33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA381ECF-7A58-400A-9098-55162499AD33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA381ECF-7A58-400A-9098-55162499AD33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1215954-0817-4176-A1AE-045FBB5B5AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1215954-0817-4176-A1AE-045FBB5B5AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1215954-0817-4176-A1AE-045FBB5B5AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1215954-0817-4176-A1AE-045FBB5B5AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B78960C-A067-4ACD-98A1-47709BC7AB5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B78960C-A067-4ACD-98A1-47709BC7AB5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B78960C-A067-4ACD-98A1-47709BC7AB5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B78960C-A067-4ACD-98A1-47709BC7AB5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

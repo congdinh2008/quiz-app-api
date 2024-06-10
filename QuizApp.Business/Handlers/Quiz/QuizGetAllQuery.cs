@@ -2,7 +2,8 @@
 
 namespace QuizApp.Business;
 
-public class GetAllQuizQuery : IRequest<IEnumerable<QuizViewModel>>
+public class QuizGetAllQuery : IRequest<IEnumerable<QuizViewModel>>
 {
     public bool IncludeDeleted { get; set; }
 }
+

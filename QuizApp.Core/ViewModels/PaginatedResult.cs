@@ -9,20 +9,11 @@ public class PaginatedResult<T>
 
     public PaginatedResult(int pageNumber, int pageSize, int totalCount, T[] items)
     {
-        if (pageNumber < 0)
-        {
-            throw new ArgumentOutOfRangeException($"Page number ({nameof(pageNumber)}) should be at least 1.");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(pageNumber);
 
-        if (pageSize <= 0)
-        {
-            throw new ArgumentOutOfRangeException($"Page size ({nameof(pageSize)}) should be at least 1.");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(pageSize);
 
-        if (totalCount < 0)
-        {
-            throw new ArgumentOutOfRangeException($"Total count ({nameof(totalCount)}) should not be negative.");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(totalCount);
 
         var totalPages = totalCount / (float)pageSize;
 

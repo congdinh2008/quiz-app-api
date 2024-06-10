@@ -32,6 +32,10 @@ public class QuizAppDbContext : IdentityDbContext<User, Role, Guid>
     {
         base.OnModelCreating(builder);
 
+        // Add Global Query Filter
+        // Loai bo tat ca record da deleted khi truy van
+        builder.Entity<Quiz>().HasQueryFilter(x => !x.IsDeleted);
+
         builder.Entity<User>().ToTable("Users", "security");
         builder.Entity<Role>().ToTable("Roles", "security");
         builder.Entity<IdentityUserRole<Guid>>().ToTable("UserRoles", "security");

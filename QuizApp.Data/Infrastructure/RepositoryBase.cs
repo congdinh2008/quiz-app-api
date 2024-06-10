@@ -45,8 +45,9 @@ public abstract class RepositoryBase<T, TContext> : GenericRepository<T, TContex
         }
         else
         {
-            entity.DeletedById = CurrentUserId;
+            // entity.DeletedById = CurrentUserId;
             entity.DeletedAt = DateTime.UtcNow;
+            entity.IsDeleted = true;
             UpdateEntityObject(entity);
         }
     }
@@ -73,7 +74,7 @@ public abstract class RepositoryBase<T, TContext> : GenericRepository<T, TContex
 
     public IQueryable<T> GetQueryWithDeleted()
     {
-        return GetQuery().Where(x => x.IsDeleted && x.IsDeleted == false);
+        return GetQuery().Where(x => x.IsDeleted || x.IsDeleted == false);
     }
 
     public T? Refresh(T entity)

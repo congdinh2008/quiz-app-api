@@ -10,5 +10,7 @@ public class MappingProfiles:Profile
     {
         CreateMap<Quiz, QuizViewModel>().ReverseMap();
         CreateMap<Quiz, QuizCreateUpdateCommand>().ReverseMap();
+
+        CreateMap<User, UserInformationViewModel>().ReverseMap();
     }
 }

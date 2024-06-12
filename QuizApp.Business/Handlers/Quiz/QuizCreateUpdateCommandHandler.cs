@@ -40,6 +40,7 @@ public class QuizCreateUpdateCommandHandler : IRequestHandler<QuizCreateUpdateCo
         request.Id = Guid.NewGuid();
 
         var quiz = _mapper.Map<Quiz>(request);
+        quiz.IsActive = true;
 
         _unitOfWork.QuizRepository.Add(quiz);
         return await _unitOfWork.SaveChangesAsync() > 0;

@@ -1,8 +1,13 @@
+using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
 using QuizApp.Business;
 using QuizApp.Data;
 using QuizApp.Models;
@@ -10,15 +15,55 @@ using QuizApp.WebAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure app settings
+builder.Services.Configure<AppSetting>(builder.Configuration);
+
+var appSettings = builder.Configuration.Get<AppSetting>();
+
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new() { Title = "QuizKuber Web API", Version = "v1" });
+    options.DocumentFilter<AuthTokenDocumentFilter>();
+
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter into field the word 'Bearer' following by space and JWT",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT"
+    });
+
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] { }
+        }
+    });
+
+    // Set the comments path for the Swagger JSON and UI.
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddDbContext<QuizAppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("QuizAppConnection"));
+    options.UseSqlServer(appSettings?.ConnectionStrings.QuizAppConnection);
 });
 
 builder.Services.AddIdentity<User, Role>()
@@ -45,13 +90,35 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings?.Jwt?.Secret ?? "congdinh2012@hotmail.com"))
+    };
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("v1/swagger.json", "Quiz Kuber Web API v1");
+    });
 
     using (var scope = app.Services.CreateScope())
     {

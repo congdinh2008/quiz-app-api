@@ -1,0 +1,21 @@
+<header class="flex justify-between items-center bg-blue-500 text-white">
+    <div class="nav-brand px-3">
+        <a routerLink="/home" class="cursor-pointer">{{brand}}</a>
+    </div>
+    <nav class="navbar flex justify-between items-center">
+        <div class="nav-item"><a routerLink="/home" class="nav-link inline-block py-3 px-3 hover:bg-blue-700">Home</a></div>
+        <div class="nav-item"><a routerLink="/about" class="nav-link inline-block py-3 px-3 hover:bg-blue-700">About</a></div>
+        <div class="nav-item"><a routerLink="/contact" class="nav-link inline-block py-3 px-3 hover:bg-blue-700">Contact</a></div>
+        <div class="nav-item"><a routerLink="/manager" class="nav-link inline-block py-3 px-3 hover:bg-blue-700">Manager</a></div>
+    </nav>
+    <div class="profile-menu relative">
+        <a (click)="toggleProfile()">
+            <img src="https://via.placeholder.com/150" alt="profile" class="rounded-full w-10 h-10">
+        </a>
+        <div class="profile-popup  absolute top-full w-[300px] right-0 bg-slate-200 text-black rounded-md shadow-md" [ngClass]="isShowProfile ? 'block':'hidden'">
+            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">Profile</a>
+            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">Settings</a>
+            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">Logout</a>
+        </div>
+    </div>
+</header>

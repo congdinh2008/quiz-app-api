@@ -1,0 +1,19 @@
+<div class="form-login h-screen flex justify-center items-center">
+    <div class="login-container border w-1/3 rounded-md border-slate-400 shadow-md p-3">
+        <h1 class="text-center text-4xl">Login</h1>
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <div class="form-group mb-3">
+                <label for="userName" class="form-label block mb-1">Username:</label>
+                <input formControlName="userName" class="border border-slate-400 focus:border-blue-500 p-3 w-full rounded-sm" type="text"
+                    name="userName" id="userName" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="form-label block mb-1">Password:</label>
+                <input formControlName="password" class="border border-slate-400 focus:border-blue-500 p-3 w-full rounded-sm" type="password"
+                    name="password" id="password" />
+            </div>
+
+            <button class="w-full p-3 bg-blue-500 hover:bg-blue-600 text-white" type="submit">Login</button>
+        </form>
+    </div>
+</div>

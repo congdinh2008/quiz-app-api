@@ -1,0 +1,17 @@
+<div class="quizzes grid grid-cols-4 gap-4">
+    <div class="card m-4 border border-slate-400 rounded-md p-3" *ngFor="let quiz of quizzes">
+        <div class="card-body">
+            <img class="w-full h-auto"
+                src="https://i1-vnexpress.vnecdn.net/2024/06/14/luc-luong-chuc-nang-dang-canh-9723-3431-1718345826.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=cQ55Oqsx-2Khmv2GQ0Gzig"
+                alt="">
+            <div class="quiz-info flex justify-between">
+                <span class="text-xl">{{quiz.title}}</span>
+                <span>{{quiz.duration}}</span>
+            </div>
+            <p class="text-slate-400">{{quiz.description}}</p>
+        </div>
+        <div class="card-footer">
+            <button class="px-3 py-2 bg-blue-500 rounded-full text-white">Take Quiz</button>
+        </div>
+    </div>
+</div>

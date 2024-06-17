@@ -1,31 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { QuizViewModel } from '../../../view-models/quiz/quiz.view-model';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { QuizOverviewComponent } from '../../shared/quiz-overview/quiz-overview.component';
+import { QUIZ_SERVICE_INJECTOR } from '../../../constants/injector.constant';
+import { IQuizService } from '../../../services/interfaces/quiz-service.inteface';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, QuizOverviewComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   public quizzes: QuizViewModel[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    @Inject(QUIZ_SERVICE_INJECTOR)
+    protected quizService: IQuizService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
   }
 
   private getData() {
-    this.httpClient
-      .get<QuizViewModel[]>('http://localhost:5242/api/Quizzes')
-      .subscribe((data) => {
-        if (data) {
-          this.quizzes = data;
-        }
-      });
+    this.quizService.getAll().subscribe((data) => {
+      if (data) {
+        this.quizzes = data;
+      }
+    });
   }
 }

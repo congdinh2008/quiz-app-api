@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { QUIZ_SERVICE_INJECTOR } from '../../constants/injector.constant';
+import { QuizService } from '../../services/implementation/quiz.service';
 
 const routes: Routes = [
   {
@@ -33,5 +35,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [CommonModule, RouterModule.forChild(routes)],
+  providers:[
+    {
+      provide: QUIZ_SERVICE_INJECTOR,
+      useClass: QuizService
+    }
+  ]
 })
 export class CustomerModule {}

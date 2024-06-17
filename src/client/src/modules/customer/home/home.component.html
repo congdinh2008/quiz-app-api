@@ -1,5 +1,13 @@
 <div class="quizzes grid grid-cols-4 gap-4">
     <ng-container *ngFor="let quiz of quizzes">
-        <app-quiz-overview [quiz-model]="quiz"></app-quiz-overview>
+        <app-quiz-overview [quiz-model]="quiz" (clickQuiz)="clickQuizOverview($event)"></app-quiz-overview>
     </ng-container>
 </div>
+
+<ng-container *ngIf="selectedQuiz">
+    <div class="selected-quiz">
+        <h2>{{selectedQuiz.title}}</h2>
+        <p>{{selectedQuiz.description}}</p>
+        <p>{{selectedQuiz.duration}}</p>
+    </div>
+</ng-container>

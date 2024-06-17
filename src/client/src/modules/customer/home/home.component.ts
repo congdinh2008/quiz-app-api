@@ -14,6 +14,7 @@ import { IQuizService } from '../../../services/interfaces/quiz-service.inteface
 })
 export class HomeComponent implements OnInit {
   public quizzes: QuizViewModel[] = [];
+  public selectedQuiz!: QuizViewModel;
 
   constructor(
     @Inject(QUIZ_SERVICE_INJECTOR)
@@ -30,5 +31,9 @@ export class HomeComponent implements OnInit {
         this.quizzes = data;
       }
     });
+  }
+
+  public clickQuizOverview(value: QuizViewModel) {
+    this.selectedQuiz = value;
   }
 }

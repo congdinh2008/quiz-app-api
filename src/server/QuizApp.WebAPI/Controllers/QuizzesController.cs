@@ -6,7 +6,6 @@ using QuizApp.Core;
 
 namespace QuizApp.WebAPI;
 
-[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
@@ -41,7 +40,6 @@ public class QuizzesController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = "System Administrator")]
     [HttpPost]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> Post([FromBody] QuizCreateUpdateCommand command)

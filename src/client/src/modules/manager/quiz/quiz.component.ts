@@ -38,6 +38,8 @@ export class QuizComponent implements OnInit {
     this.quizService.getAll().subscribe((data) => {
       if (data) {
         this.quizzes = data;
+      } else {
+        this.quizzes = [];
       }
     });
   }

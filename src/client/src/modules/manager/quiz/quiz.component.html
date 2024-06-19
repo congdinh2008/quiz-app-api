@@ -3,31 +3,36 @@
         <h1>Quiz Management</h1>
     </div>
     <div class="card-body p-3 border-y">
-        <table class="w-full table-auto border-collapse border-spacing-2">
-            <thead>
-                <tr>
-                    <th class="border border-slate-300 py-2 px-3">Title</th>
-                    <th class="border border-slate-300 py-2 px-3">Description</th>
-                    <th class="border border-slate-300 py-2 px-3">Duration</th>
-                    <th class="border border-slate-300 py-2 px-3">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let quiz of quizzes">
-                    <td class="border border-slate-300 py-2 px-3">{{quiz.title}}</td>
-                    <td class="border border-slate-300 py-2 px-3">{{quiz.description}}</td>
-                    <td class="border border-slate-300 py-2 px-3">{{quiz.duration}}</td>
-                    <td class="border border-slate-300 py-2 px-3 text-center">
-                        <button title="Edit" class="text-blue-500 me-3" (click)="edit(quiz.id)">
-                            <fa-icon [icon]="faEdit"></fa-icon>
-                        </button>
-                        <button title="Delete" class=" text-red-500" (click)="delete(quiz.id)">
-                            <fa-icon [icon]="faTrashCan"></fa-icon>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <ng-container *ngIf="quizzes.length > 0">
+            <table class="w-full table-auto border-collapse border-spacing-2">
+                <thead>
+                    <tr>
+                        <th class="border border-slate-300 py-2 px-3">Title</th>
+                        <th class="border border-slate-300 py-2 px-3">Description</th>
+                        <th class="border border-slate-300 py-2 px-3">Duration</th>
+                        <th class="border border-slate-300 py-2 px-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let quiz of quizzes">
+                        <td class="border border-slate-300 py-2 px-3">{{quiz.title}}</td>
+                        <td class="border border-slate-300 py-2 px-3">{{quiz.description}}</td>
+                        <td class="border border-slate-300 py-2 px-3">{{quiz.duration}}</td>
+                        <td class="border border-slate-300 py-2 px-3 text-center">
+                            <button title="Edit" class="text-blue-500 me-3" (click)="edit(quiz.id)">
+                                <fa-icon [icon]="faEdit"></fa-icon>
+                            </button>
+                            <button title="Delete" class=" text-red-500" (click)="delete(quiz.id)">
+                                <fa-icon [icon]="faTrashCan"></fa-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-container>
+        <ng-container *ngIf="quizzes.length <=0">
+            <h2>Not found any quiz!</h2>
+        </ng-container>
     </div>
     <div class="card-footer p-3 text-end">
         <button class="min-w-[100px] py-2 px-3 rounded-full bg-blue-500 text-white" (click)="add()">

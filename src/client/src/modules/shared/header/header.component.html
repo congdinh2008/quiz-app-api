@@ -9,7 +9,8 @@
         </div>
         <div class="nav-item"><a routerLink="/contact"
                 class="nav-link inline-block py-3 px-3 hover:bg-blue-700">Contact</a></div>
-        <div class="nav-item"><a routerLink="/manager"
+        <div class="nav-item" *ngIf="isManager">
+            <a routerLink="/manager"
                 class="nav-link inline-block py-3 px-3 hover:bg-blue-700">Manager</a></div>
     </nav>
     <div class="profile-menu relative">
@@ -18,9 +19,9 @@
         </a>
         <div class="profile-popup  absolute top-full w-[300px] right-0 bg-slate-200 text-black rounded-md shadow-md"
             [ngClass]="isShowProfile ? 'block':'hidden'">
-            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">{{this.user.userName}}</a>
+            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">{{this.user?.displayName}}</a>
             <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">Settings</a>
-            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white">Logout</a>
+            <a href="" class="block py-2 px-4 hover:bg-blue-700 hover:text-white" (click)="logout()">Logout</a>
         </div>
     </div>
 </header>

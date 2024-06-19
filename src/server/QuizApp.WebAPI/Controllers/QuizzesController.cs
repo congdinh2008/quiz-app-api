@@ -6,6 +6,7 @@ using QuizApp.Core;
 
 namespace QuizApp.WebAPI;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
@@ -22,6 +23,7 @@ public class QuizzesController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [AllowAnonymous]
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(QuizViewModel), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -31,7 +33,7 @@ public class QuizzesController(IMediator mediator) : ControllerBase
         var result = await mediator.Send(request);
         return Ok(result);
     }
-
+    [AllowAnonymous]
     [HttpPost("search")]
     [ProducesResponseType(typeof(PaginatedResult<QuizViewModel>), StatusCodes.Status200OK)]
     public async Task<IActionResult> Search([FromBody] QuizSearchQuery query)
@@ -40,6 +42,7 @@ public class QuizzesController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpPost]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> Post([FromBody] QuizCreateUpdateCommand command)
@@ -53,6 +56,7 @@ public class QuizzesController(IMediator mediator) : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpDelete("{id}")]
     [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
     public async Task<IActionResult> Delete([FromRoute] Guid id, [FromQuery] bool isHardDelete)

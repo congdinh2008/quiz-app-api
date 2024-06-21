@@ -121,11 +121,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("v1/swagger.json", "Quiz Kuber Web API v1");
-    });
+
 
     using (var scope = app.Services.CreateScope())
     {
@@ -138,6 +134,12 @@ if (app.Environment.IsDevelopment())
         DbInitializer.Seed(dbcontext, userManager, roleManager, rolesJsonPath, usersJsonPath, true);
     }
 }
+
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("v1/swagger.json", "Quiz Kuber Web API v1");
+});
 
 // Error Handling:
 // Implement global error handling middleware to catch and log exceptions thrown during request processing.
